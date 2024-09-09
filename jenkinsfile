@@ -53,12 +53,12 @@ pipeline {
              
             }
         }
-        stage('deploy-Ejecucion de docker'){
+        stage('deploy-Ejecucion de docke'){
             steps {
                         sh 'docker build -t backend-base-devops:latest .'
                 }
             }
-        }
+        
         stage('Deploy'){
             steps {
                 script {
