@@ -34,25 +34,7 @@ pipeline {
                } 
             }
         }
-        stage('SonarQube Analisis'){
-            stages {
-                stage('SonarQube Analisis') {
-                    agent {
-                        docker {
-                            image 'sonarsource/sonar-scanner-cli' 
-                            args '--network="backend-base-devops_default"'
-                            reuseNode true
-                        }
-                    }
-                    steps {
-                        withSonarQubeEnv('sonarqube') {
-                            sh 'sonar-scanner'
-                        }
-                    }
-                }
-             
-            }
-        }
+    
         stage('deploy-Ejecucion de docke'){
             steps {
                         sh 'docker build -t backend-base-devops:latest .'
