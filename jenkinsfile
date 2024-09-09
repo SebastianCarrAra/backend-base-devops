@@ -46,6 +46,7 @@ pipeline {
                 }
             }
         }
+     }
         stage('deploy-Ejecucion de docker'){
             steps {
                     sh 'ls -la'
