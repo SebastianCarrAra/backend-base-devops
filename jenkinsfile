@@ -53,13 +53,9 @@ pipeline {
              
             }
         }
-        stage('Creacion de Docker'){
+        stage('deploy-Ejecucion de docker'){
             steps {
-                script {
-                    {
                         sh 'docker build -t backend-base-devops:latest .'
-                                             
-                    }
                 }
             }
         }
