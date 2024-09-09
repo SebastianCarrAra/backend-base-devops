@@ -44,17 +44,17 @@ pipeline {
             }
         
         
-        stage('deploy-Ejecucion de- Nexus'){
+        stage('deploy-Ejecucion de Nexus'){
             steps {
                     
                     sh "docker tag backend-base-devops:latest localhost:8082/backend-base-devops:latest"
                     sh 'docker push localhost:8082/backend-base-devops:latest'
                  }
             }
-        stage('Deploy'){
+       /* stage('Deploy'){
             steps {
                sh "docker compose up  --build -d"
             }
-        }
+        }*/
     }
 }
