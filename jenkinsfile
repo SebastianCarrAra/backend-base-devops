@@ -35,10 +35,11 @@ pipeline {
             }
         }
     
-        stage('deploy-Ejecucion de docke'){
+        stage('deploy-Ejecucion de docker'){
             steps {
-                        sh 'docker build -t backend-base-devops:latest .'
-                }
+                    sh 'ls -la'
+                    sh 'docker build -t backend-base-devops:latest .'
+                 }
             }
         
         stage('Deploy'){
