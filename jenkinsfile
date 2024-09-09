@@ -62,10 +62,13 @@ pipeline {
                     sh 'docker push localhost:8082/backend-base-devops:latest'
                  }
             }
-       /* stage('Deploy'){
+        stage('Deploy'){
             steps {
-               sh "docker compose up  --build -d"
+                
+                       sh "docker compose pull"
+                       sh "docker compose up  --build -d"
+               
             }
-        }*/
+        }
     }
 }
