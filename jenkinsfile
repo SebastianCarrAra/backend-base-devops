@@ -53,18 +53,7 @@ pipeline {
             }
         stage('Deploy'){
             steps {
-                script {
-                    
-                    if (env.BRANCH_NAME == 'main') {
-                        ambiente = 'prd'
-                    } else {
-                        ambiente = 'dev'
-                    }
-                    docker.withRegistry('http://localhost:8084', 'nexus-key') {
-                       sh "docker compose pull"
-                       sh "docker compose up  --build -d"
-                    }
-                }
+               sh "docker compose up  --build -d"
             }
         }
     }
