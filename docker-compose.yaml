@@ -41,7 +41,7 @@ services:
     volumes:
       - nexus-data:/nexus-data
     ports:
-      - "8083:8081"
+      - "8085:8081"
   sonarqube:
     image: sonarqube:community
     depends_on:
