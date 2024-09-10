@@ -17,14 +17,12 @@ app.get("/key", (req, res) => {
 
 app.get("/palindromo/:frase", (req, res) => {
   const { frase } = req.params
-
-  if (!frase) {
-    throw new Error("Hola, La frase ingresada no es palindromo");
-}
-
-  if (typeof frase !== 'string' || frase.trim() === '') {
+  
+  if (!frase || frase.trim() === '') {
     return res.status(400).send({ error: "frase no proporcionada" });
-}
+  }
+
+ 
 
 const esPalindromos = esPalindromo(frase);
   res.send(`Hola, La frase ingresada ${esPalindromos ? "es" : "no es"} palindromo`);
@@ -32,7 +30,7 @@ const esPalindromos = esPalindromo(frase);
 
 app.get("/primo/:numero", (req, res) => {
   const { numero } = req.params
-  if (!numero || isNaN(Number(numero)))  {
+  if (isNaN(Number(numero)))  {
     return res.status(400).send({ error: "Número no proporcionado o inválido" });
 }
 
