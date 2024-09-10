@@ -17,8 +17,8 @@ services:
         # Add any other gitlab.rb configuration here, each on its own line
         external_url 'https://gitlab.carlosmarind.cl'
     ports:
-      - '80:80'
-      - '443:443'
+      - '8085:80'
+      - '8086:443'
       - '22:22'
     volumes:
       - gitlab-config:/etc/gitlab
@@ -31,7 +31,7 @@ services:
       dockerfile: Dockerfile-jenkins
     restart: always
     ports:
-      - "8080:8080"
+      - "8087:8080"
     volumes:
       - jenkins_home:/var/jenkins_home
       - /var/run/docker.sock:/var/run/docker.sock
@@ -41,9 +41,9 @@ services:
     volumes:
       - nexus-data:/nexus-data
     ports:
-      - "8081:8081"
-      - "8082:8082"
-      - "8083:8083"
+      - "8088:8081"
+      - "8089:8082"
+      - "8090:8083"
   sonarqube:
     image: sonarqube:community
     depends_on:
@@ -57,7 +57,7 @@ services:
       - sonarqube_extensions:/opt/sonarqube/extensions
       - sonarqube_logs:/opt/sonarqube/logs
     ports:
-      - "8084:9000"
+      - "8091:9000"
   db_sonar:
     image: postgres:12
     environment:
