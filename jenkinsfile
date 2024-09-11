@@ -34,36 +34,7 @@ pipeline {
                } 
             }
         }
-    
-
-        stage('Login to Nexus') {
-            steps {
-                withCredentials([usernamePassword(credentialsId: 'nexus-credentials-id', usernameVariable: 'NEXUS_USERNAME', passwordVariable: 'NEXUS_PASSWORD')]) {
-                    sh """
-                        docker login localhost:8082 -u $NEXUS_USERNAME -p $NEXUS_PASSWORD
-                    """
-                }
-            }
-        }
-    
-        stage('deploy-Ejecucion de docker'){
-            steps {
-                    sh 'ls -la'
-                    sh 'docker build -t backend-base-devops:latest .'
-                    
-                 }
-            }
-        
-        
-        stage('deploy-Ejecucion de Nexus'){
-            steps {
-                    
-                    sh "docker tag backend-base-devops:latest localhost:8082/backend-base-devops:latest"
-                    sh 'docker push localhost:8082/backend-base-devops:latest'
-                 }
-            }
-
-         stage('Code Quality'){
+    stage('Code Quality'){
             stages {
                 stage('SonarQube Analisis') {
                     agent {
@@ -95,6 +66,35 @@ pipeline {
                 }
             }
         }
+
+        stage('Login to Nexus') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'nexus-credentials-id', usernameVariable: 'NEXUS_USERNAME', passwordVariable: 'NEXUS_PASSWORD')]) {
+                    sh """
+                        docker login localhost:8082 -u $NEXUS_USERNAME -p $NEXUS_PASSWORD
+                    """
+                }
+            }
+        }
+    
+        stage('deploy-Ejecucion de docker'){
+            steps {
+                    sh 'ls -la'
+                    sh 'docker build -t backend-base-devops:latest .'
+                    
+                 }
+            }
+        
+        
+        stage('deploy-Ejecucion de Nexus'){
+            steps {
+                    
+                    sh "docker tag backend-base-devops:latest localhost:8082/backend-base-devops:latest"
+                    sh 'docker push localhost:8082/backend-base-devops:latest'
+                 }
+            }
+
+         
       
 
         stage('Deploy'){
