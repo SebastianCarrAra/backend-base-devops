@@ -19,10 +19,8 @@ app.get("/key", (req, res) => {
 app.get("/palindromo/:frase", (req, res) => {
   const { frase } = req.params
   
-  if (!frase || frase.trim() === '') {
-    return res.status(400).send({ error: "frase no proporcionada" });
-  }
 
+ 
  
 
 const esPalindromos = esPalindromo(frase);
@@ -31,10 +29,7 @@ const esPalindromos = esPalindromo(frase);
 
 app.get("/primo/:numero", (req, res) => {
   const { numero } = req.params
-  if (isNaN(Number(numero)))  {
-    return res.status(400).send({ error: "Número no proporcionado o inválido" });
-}
-
+ 
  
 const esPrimos = esPrimo(+numero);
 

@@ -39,13 +39,10 @@ describe("Test Suite App", () => {
         Palabra = ["esto", "es", "un", "array"];
         expect(() => { esPalindromo(Palabra) }).toThrow("No se ingresó un valor correcto");
         
-
-/*
-       test("debería lanzar error si la frase es un objeto", () => {
-            const frase: any = { text: "esto es un objeto" };
-            expect(() => esPalindromo(frase)).toThrow("No se ingresó un valor correcto");
-        });
-*/
+        Palabra = "";
+        expect(() => { esPalindromo(Palabra) }).toThrow("No se ingresó un valor correcto");
+        
+ 
     });
  
     test("endpoint /primo", () => {
@@ -150,15 +147,5 @@ describe("Test Suite App", () => {
             expect(response.text).toBe(`Hola, el numero ingresado no es un numero primo`);
           });
       });
-
-/*      test("test de endpoint /primo con decimal", async () => {
-        return await request(app)
-            .get("/primo/3.14")
-            .expect("Content-Type", /text/)
-            .expect(400)   
-            .then((response) => {
-                expect(response.body.error).toBe(`Hola, el numero ingresado no es un numero primo`);
-            });
-    });*/
 
 });
